@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "custom-gpt"
+version = "0.1.0"
+description = "Starter repo for custom GPT experiments"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "CUSTOM-GPT Contributors" }]
+
+[project.scripts]
+custom-gpt = "custom_gpt.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

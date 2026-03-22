@@ -1,16 +1,29 @@
 # CUSTOM-GPT
 
-A lightweight workspace for experimenting with custom GPT behaviors and prompts. This repository currently contains scaffolding for future automation and serves as a starting point for small utilities or notebooks.
+Minimalne repozytorium startowe do eksperymentów z własnym GPT i automatyzacjami.
 
-## Getting started
-1. Ensure you have Python 3.11 or later installed.
-2. Create and activate a virtual environment (e.g., `python -m venv .venv && source .venv/bin/activate`).
-3. Install any project dependencies as they are added.
+## Co zawiera
+- `pyproject.toml` z podstawową konfiguracją projektu Python.
+- Pakiet `custom_gpt` w `src/`.
+- Proste CLI dostępne jako komenda `custom-gpt`.
 
-## Development
-- Commit changes in small, reviewable increments.
-- Keep configuration files under version control and avoid committing secrets.
-- Use `.gitignore` to keep transient artifacts out of the repository.
+## Szybki start
+1. Upewnij się, że masz Python 3.11+.
+2. (Opcjonalnie) utwórz wirtualne środowisko:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+3. Zainstaluj projekt lokalnie:
+   ```bash
+   pip install -e .
+   ```
+4. Uruchom:
+   ```bash
+   custom-gpt
+   ```
 
-## Contributing
-Issues and pull requests are welcome as the project grows. Please include clear descriptions of any changes or ideas for new functionality.
+## Rozwój
+- Rób małe, czytelne commity.
+- Nie commituj sekretów.
+- Uzupełniaj `.gitignore` wraz z rozwojem projektu.
