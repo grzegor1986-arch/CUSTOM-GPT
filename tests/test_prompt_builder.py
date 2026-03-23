@@ -1,4 +1,6 @@
-from custom_gpt import PromptBuilder, PromptSection
+import pytest
+
+from custom_gpt import MissingTemplateVariableError, PromptBuilder, PromptSection
 
 
 def test_add_section_and_render():
@@ -66,3 +68,28 @@ def test_clear_removes_all_sections():
 
     assert builder.render() == ""
     assert builder.sections == ()
+
+
+def test_render_template_replaces_variables():
+    builder = PromptBuilder().add_section("System", "You are {assistant_name}.")
+
+    assert (
+        builder.render_template({"assistant_name": "Codex"})
+        == "System:\nYou are Codex."
+    )
+
+
+def test_render_template_raises_for_missing_variable_when_strict():
+    builder = PromptBuilder().add_section("System", "You are {assistant_name}.")
+
+    with pytest.raises(MissingTemplateVariableError):
+        builder.render_template({}, strict=True)
+
+
+def test_render_template_keeps_missing_variable_when_not_strict():
+    builder = PromptBuilder().add_section("System", "You are {assistant_name}.")
+
+    assert (
+        builder.render_template({}, strict=False)
+        == "System:\nYou are {assistant_name}."
+    )

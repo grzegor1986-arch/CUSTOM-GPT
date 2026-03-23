@@ -6,6 +6,10 @@ from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
 
 
+class MissingTemplateVariableError(ValueError):
+    """Raised when a required template variable is not provided."""
+
+
 @dataclass
 class PromptSection:
     """Represents one section of a prompt.
@@ -118,5 +122,32 @@ class PromptBuilder:
 
         return "\n\n".join(rendered_sections)
 
+    def render_template(
+        self, variables: Mapping[str, str], *, strict: bool = True
+    ) -> str:
+        """Render the prompt and fill ``str.format`` placeholders.
 
-__all__ = ["PromptBuilder", "PromptSection"]
+        Args:
+            variables: Mapping used to replace template placeholders.
+            strict: If ``True``, missing placeholders raise an error.
+                If ``False``, unknown placeholders are preserved.
+        """
+
+        prompt = self.render()
+        if strict:
+            try:
+                return prompt.format_map(dict(variables))
+            except KeyError as exc:
+                missing_key = exc.args[0]
+                raise MissingTemplateVariableError(
+                    f"Missing template variable: {missing_key}"
+                ) from exc
+
+        class _SafeDict(dict[str, str]):
+            def __missing__(self, key: str) -> str:
+                return "{" + key + "}"
+
+        return prompt.format_map(_SafeDict(variables))
+
+
+__all__ = ["MissingTemplateVariableError", "PromptBuilder", "PromptSection"]
