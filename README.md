@@ -1,16 +1,18 @@
 # CUSTOM-GPT
 
-A lightweight workspace for experimenting with custom GPT behaviors and prompts. This repository currently contains scaffolding for future automation and serves as a starting point for small utilities or notebooks.
+A lightweight workspace for experimenting with custom GPT behaviors and prompts.
 
-## Getting started
-1. Ensure you have Python 3.11 or later installed.
-2. Create and activate a virtual environment (e.g., `python -m venv .venv && source .venv/bin/activate`).
-3. Install any project dependencies as they are added.
+## ops-ui
+Repository now contains `ops-ui/` frontend for orchestrator operators:
+- Runs: timeline kroków, błędy i logi narzędzi.
+- Connectors: healthcheck i status autoryzacji.
+- Policies: edycja reguł dostępu i listy dozwolonych akcji.
+- Operator actions: retry run, cancel run, manual approve dla kroków wrażliwych.
+- KPI dashboard: średni czas wykonania, skuteczność, najczęściej używane narzędzia.
 
-## Development
-- Commit changes in small, reviewable increments.
-- Keep configuration files under version control and avoid committing secrets.
-- Use `.gitignore` to keep transient artifacts out of the repository.
+### Run locally
+1. `cd ops-ui`
+2. `npm install`
+3. `npm run dev`
 
-## Contributing
-Issues and pull requests are welcome as the project grows. Please include clear descriptions of any changes or ideas for new functionality.
+Frontend expected orchestrator API under `/api/*` (configured in Vite proxy with `ORCHESTRATOR_URL`, default `http://localhost:8080`).
