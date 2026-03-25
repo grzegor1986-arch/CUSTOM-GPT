@@ -10,7 +10,18 @@ A lightweight workspace for experimenting with custom GPT behaviors and prompts.
 ## Getting started
 1. Ensure you have Python 3.11 or later installed.
 2. Create and activate a virtual environment (e.g., `python -m venv .venv && source .venv/bin/activate`).
-3. Install any project dependencies as they are added.
+3. Install dependencies: `pip install -r requirements.txt`.
+
+## Run
+Run the starter script:
+```bash
+python scripts/hello_customgpt.py
+```
+
+Expected output (example):
+- `Hello from CUSTOM-GPT 👋`
+- Current UTC timestamp
+- A prompt to replace the starter with your first real utility
 
 ## Connect GitHub to CustomGPT
 ### English
@@ -37,12 +48,11 @@ Wskazówki:
 - Jeśli zarządzasz organizacją, sprawdź, czy masz uprawnienia do instalacji aplikacji GitHub.
 - Jeśli repozytorium nie jest widoczne, odśwież integrację lub ponownie uruchom proces autoryzacji.
 
-## Suggested next upgrade
-To move this repository from scaffolding to a usable starter, consider adding:
-1. A `scripts/` or `src/` folder with one executable example.
-2. A `requirements.txt` or `pyproject.toml` with pinned dependencies.
-3. A short "Run" section with exact commands and expected output.
-4. A simple CI check (format/lint) to keep changes consistent.
+## Implemented upgrades
+- Added `scripts/hello_customgpt.py` as the first runnable utility.
+- Added `requirements.txt` for dependency management.
+- Added this "Run" section with exact command and expected output.
+- Added GitHub Actions CI at `.github/workflows/ci.yml` with a Python syntax check.
 
 ## Development
 - Commit changes in small, reviewable increments.

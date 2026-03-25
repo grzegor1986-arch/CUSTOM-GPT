@@ -1,0 +1,2 @@
+# This starter currently uses only the Python standard library.
+# Add pinned third-party dependencies below as the project grows.
