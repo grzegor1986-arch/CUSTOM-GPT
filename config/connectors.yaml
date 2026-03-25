@@ -1,0 +1,31 @@
+{
+  "connectors": [
+    {
+      "name": "github",
+      "module": "connectors.github.connector",
+      "class": "GithubConnector",
+      "kwargs": {
+        "server_name": "github-mcp"
+      },
+      "capability_tags": ["code", "tickets", "knowledge"]
+    },
+    {
+      "name": "slack",
+      "module": "connectors.slack.connector",
+      "class": "SlackConnector",
+      "kwargs": {
+        "api_base": "https://slack.com/api"
+      },
+      "capability_tags": ["messaging", "knowledge"]
+    },
+    {
+      "name": "postgres",
+      "module": "connectors.postgres.connector",
+      "class": "PostgresConnector",
+      "kwargs": {
+        "dsn": "postgresql://localhost:5432/app"
+      },
+      "capability_tags": ["knowledge", "tickets"]
+    }
+  ]
+}
